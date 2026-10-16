@@ -11,9 +11,9 @@
     "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\""
   },
   "dependencies": {
-    "fastify": "^5.0.0",
-    "node-core-kit": "workspace:^",
-    "node-core-kit-adapter-fastify": "workspace:^"
+    "@cassianolucas/node-core-kit": "workspace:^",
+    "@cassianolucas/node-core-kit-adapter-fastify": "workspace:^",
+    "fastify": "^5.0.0"
   },
   "devDependencies": {
     "tsx": "^4.20.0",

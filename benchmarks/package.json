@@ -7,9 +7,9 @@
     "bench": "node run.mjs"
   },
   "dependencies": {
-    "fastify": "^5.12.7",
-    "node-core-kit": "workspace:^",
-    "node-core-kit-adapter-fastify": "workspace:^",
-    "node-core-kit-adapter-node": "workspace:^"
+    "@cassianolucas/node-core-kit": "workspace:^",
+    "@cassianolucas/node-core-kit-adapter-fastify": "workspace:^",
+    "@cassianolucas/node-core-kit-adapter-node": "workspace:^",
+    "fastify": "^5.12.7"
   }
 }

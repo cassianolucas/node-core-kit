@@ -21,7 +21,7 @@ import {
   NotFoundError,
   RouteDefinition,
   RouteHandler,
-} from "node-core-kit";
+} from "@cassianolucas/node-core-kit";
 
 type Handler = RouteHandler;
 

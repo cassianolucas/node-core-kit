@@ -14,7 +14,7 @@
     }
   },
   "dependencies": {
-    "node-core-kit": "workspace:^"
+    "@cassianolucas/node-core-kit": "workspace:^"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",

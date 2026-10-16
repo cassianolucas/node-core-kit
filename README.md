@@ -30,7 +30,7 @@ application on different HTTP servers. The first adapter ships for
 Install the core package and one HTTP adapter:
 
 ```bash
-npm install node-core-kit node-core-kit-adapter-fastify
+npm install @cassianolucas/node-core-kit @cassianolucas/node-core-kit-adapter-fastify
 ```
 
 The Fastify adapter installs Fastify as a dependency. If you prefer no
@@ -38,7 +38,7 @@ third-party HTTP server, use the `node:http` adapter, which has no runtime
 dependencies:
 
 ```bash
-npm install node-core-kit node-core-kit-adapter-node
+npm install @cassianolucas/node-core-kit @cassianolucas/node-core-kit-adapter-node
 ```
 
 With yarn, use `yarn add` in place of `npm install`.
@@ -46,8 +46,8 @@ With yarn, use `yarn add` in place of `npm install`.
 ## Quick start
 
 ```typescript
-import { Application } from "node-core-kit";
-import { FastifyAdapter } from "node-core-kit-adapter-fastify";
+import { Application } from "@cassianolucas/node-core-kit";
+import { FastifyAdapter } from "@cassianolucas/node-core-kit-adapter-fastify";
 
 const app = new Application({
   http: new FastifyAdapter(),
@@ -154,7 +154,7 @@ Response rules:
 Result helpers live on `Results`:
 
 ```typescript
-import { Results } from "node-core-kit";
+import { Results } from "@cassianolucas/node-core-kit";
 
 app.mapPost("/users", (context) => {
   const user = createUser(context.request.body); // your own logic
@@ -228,7 +228,7 @@ A middleware wraps the rest of the pipeline. Call `next()` to continue, and
 run code before and after it:
 
 ```typescript
-import type { HttpContext, HttpMiddleware } from "node-core-kit";
+import type { HttpContext, HttpMiddleware } from "@cassianolucas/node-core-kit";
 
 class RequestTimer implements HttpMiddleware {
   async execute(
@@ -273,7 +273,7 @@ responses, sent with `Content-Type: application/problem+json`.
 | Any other error     | 500    | `INTERNAL_SERVER_ERROR` |
 
 ```typescript
-import { NotFoundError } from "node-core-kit";
+import { NotFoundError } from "@cassianolucas/node-core-kit";
 
 app.mapGet("/users/:id", (context) => {
   const user = findUser(context.request.params.id); // your own lookup
@@ -321,7 +321,7 @@ import {
   ExceptionHandler,
   HttpContext,
   Results,
-} from "node-core-kit";
+} from "@cassianolucas/node-core-kit";
 
 class InsufficientFundsError extends AppError {
   constructor(readonly balance: number) {
@@ -436,7 +436,7 @@ string. The handler receives the parsed value on the context as `body` or
 `query`, and its type is inferred from the parser:
 
 ```typescript
-import { ValidationError } from "node-core-kit";
+import { ValidationError } from "@cassianolucas/node-core-kit";
 
 // No validation library needed: a plain function is a valid parser.
 const parseCreateUser = (input: unknown) => {
@@ -488,7 +488,12 @@ Bindings read values from the request and the container, and pass them as
 typed arguments to a handler:
 
 ```typescript
-import { body, endpoint, queryParam, routeParam } from "node-core-kit";
+import {
+  body,
+  endpoint,
+  queryParam,
+  routeParam,
+} from "@cassianolucas/node-core-kit";
 
 app.mapPost(
   "/users/:id/notes",
@@ -538,11 +543,11 @@ app.useFilter(async (context, next) => {
 
 ## Packages
 
-| Package                         | Description                                                     |
-| ------------------------------- | --------------------------------------------------------------- |
-| `node-core-kit`                 | Application, routing, middleware, DI, errors and test tools     |
-| `node-core-kit-adapter-fastify` | HTTP adapter backed by Fastify 5                                |
-| `node-core-kit-adapter-node`    | HTTP adapter built on `node:http`, with no runtime dependencies |
+| Package                                        | Description                                                     |
+| ---------------------------------------------- | --------------------------------------------------------------- |
+| `@cassianolucas/node-core-kit`                 | Application, routing, middleware, DI, errors and test tools     |
+| `@cassianolucas/node-core-kit-adapter-fastify` | HTTP adapter backed by Fastify 5                                |
+| `@cassianolucas/node-core-kit-adapter-node`    | HTTP adapter built on `node:http`, with no runtime dependencies |
 
 ### Adapters
 
@@ -559,7 +564,7 @@ new FastifyAdapter({ logger: true });
 
 ### Writing an adapter
 
-An adapter implements `HttpAdapter` from `node-core-kit`:
+An adapter implements `HttpAdapter` from `@cassianolucas/node-core-kit`:
 
 - `register(routes, services, middlewares, options)`: keep the routes; apply
   `options.bodyLimit` and `options.requestTimeoutMs`.
@@ -574,12 +579,12 @@ against your adapter with `node-core-kit-adapter-contract` (see
 
 ### Testing your application
 
-`node-core-kit/testing` provides an in-memory adapter. It runs requests through
+`@cassianolucas/node-core-kit/testing` provides an in-memory adapter. It runs requests through
 the same pipeline without opening a port:
 
 ```typescript
-import { Application } from "node-core-kit";
-import { TestHttpAdapter } from "node-core-kit/testing";
+import { Application } from "@cassianolucas/node-core-kit";
+import { TestHttpAdapter } from "@cassianolucas/node-core-kit/testing";
 import { expect, it } from "vitest";
 
 it("creates a user", async () => {
@@ -662,9 +667,9 @@ Project layout:
 
 ```
 packages/
-  core/                 node-core-kit
-  adapter-fastify/      node-core-kit-adapter-fastify
-  adapter-node/         node-core-kit-adapter-node
+  core/                 @cassianolucas/node-core-kit
+  adapter-fastify/      @cassianolucas/node-core-kit-adapter-fastify
+  adapter-node/         @cassianolucas/node-core-kit-adapter-node
   adapter-contract/     shared behavior tests for adapters (private)
 examples/
   basic-api/            runnable example API

@@ -6,9 +6,9 @@ import {
   Results,
   routeParam,
   ValidationError,
-} from "node-core-kit";
+} from "@cassianolucas/node-core-kit";
 
-import { FastifyAdapter } from "node-core-kit-adapter-fastify";
+import { FastifyAdapter } from "@cassianolucas/node-core-kit-adapter-fastify";
 
 class RequestLogger implements HttpMiddleware {
   async execute(

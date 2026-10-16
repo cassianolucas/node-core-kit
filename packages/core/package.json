@@ -1,5 +1,5 @@
 {
-  "name": "node-core-kit",
+  "name": "@cassianolucas/node-core-kit",
   "version": "0.1.0",
   "description": "NodeCore core: minimal routing, middleware, filters, dependency injection and Problem Details errors for Node.js APIs",
   "license": "MIT",

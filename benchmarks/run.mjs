@@ -8,9 +8,9 @@
 
 import { createServer } from "node:http";
 import Fastify from "fastify";
-import { Application } from "node-core-kit";
-import { FastifyAdapter } from "node-core-kit-adapter-fastify";
-import { NodeHttpAdapter } from "node-core-kit-adapter-node";
+import { Application } from "@cassianolucas/node-core-kit";
+import { FastifyAdapter } from "@cassianolucas/node-core-kit-adapter-fastify";
+import { NodeHttpAdapter } from "@cassianolucas/node-core-kit-adapter-node";
 
 const durationMs = Number(process.env.BENCH_DURATION_MS ?? 5000);
 const concurrency = Number(process.env.BENCH_CONCURRENCY ?? 50);

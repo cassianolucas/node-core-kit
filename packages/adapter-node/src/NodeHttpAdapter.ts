@@ -21,7 +21,7 @@ import {
   NotFoundError,
   RouteDefinition,
   RouteHandler,
-} from "node-core-kit";
+} from "@cassianolucas/node-core-kit";
 
 const DEFAULT_BODY_LIMIT = 1024 * 1024;
 

@@ -1,15 +1,15 @@
-# node-core-kit-adapter-node
+# @cassianolucas/node-core-kit-adapter-node
 
 HTTP adapter for [NodeCore](https://github.com/cassianolucas/node-core-kit#readme) built on `node:http`. It has no
 runtime dependencies:
 
 ```bash
-npm install node-core-kit node-core-kit-adapter-node
+npm install @cassianolucas/node-core-kit @cassianolucas/node-core-kit-adapter-node
 ```
 
 ```typescript
-import { Application } from "node-core-kit";
-import { NodeHttpAdapter } from "node-core-kit-adapter-node";
+import { Application } from "@cassianolucas/node-core-kit";
+import { NodeHttpAdapter } from "@cassianolucas/node-core-kit-adapter-node";
 
 const app = new Application({ http: new NodeHttpAdapter(), port: 3000 });
 ```

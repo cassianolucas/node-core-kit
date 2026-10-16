@@ -6,7 +6,7 @@ import {
   HttpContext,
   Results,
   ValidationError,
-} from "node-core-kit";
+} from "@cassianolucas/node-core-kit";
 
 interface Running {
   app: Application;

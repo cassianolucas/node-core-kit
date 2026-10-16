@@ -4,9 +4,9 @@
   "commit": false,
   "fixed": [
     [
-      "node-core-kit",
-      "node-core-kit-adapter-fastify",
-      "node-core-kit-adapter-node"
+      "@cassianolucas/node-core-kit",
+      "@cassianolucas/node-core-kit-adapter-fastify",
+      "@cassianolucas/node-core-kit-adapter-node"
     ]
   ],
   "linked": [],

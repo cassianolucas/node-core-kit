@@ -47,6 +47,42 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@cassianolucas/node-core-kit-adapter-fastify@workspace:^, @cassianolucas/node-core-kit-adapter-fastify@workspace:packages/adapter-fastify":
+  version: 0.0.0-use.local
+  resolution: "@cassianolucas/node-core-kit-adapter-fastify@workspace:packages/adapter-fastify"
+  dependencies:
+    "@cassianolucas/node-core-kit": "workspace:^"
+    fastify: "npm:^5.12.7"
+    typescript: "npm:^7.0.2"
+    vite: "npm:^8.3.4"
+    vitest: "npm:^5.0.5"
+  languageName: unknown
+  linkType: soft
+
+"@cassianolucas/node-core-kit-adapter-node@workspace:^, @cassianolucas/node-core-kit-adapter-node@workspace:packages/adapter-node":
+  version: 0.0.0-use.local
+  resolution: "@cassianolucas/node-core-kit-adapter-node@workspace:packages/adapter-node"
+  dependencies:
+    "@cassianolucas/node-core-kit": "workspace:^"
+    "@types/node": "npm:^26.6.5"
+    node-core-kit-adapter-contract: "workspace:^"
+    typescript: "npm:^7.0.2"
+    vite: "npm:^8.3.4"
+    vitest: "npm:^5.0.5"
+  languageName: unknown
+  linkType: soft
+
+"@cassianolucas/node-core-kit@workspace:^, @cassianolucas/node-core-kit@workspace:packages/core":
+  version: 0.0.0-use.local
+  resolution: "@cassianolucas/node-core-kit@workspace:packages/core"
+  dependencies:
+    "@types/node": "npm:^26.6.5"
+    typescript: "npm:^7.0.2"
+    vite: "npm:^8.3.4"
+    vitest: "npm:^5.0.5"
+  languageName: unknown
+  linkType: soft
+
 "@changesets/apply-release-plan@npm:^8.1.1":
   version: 8.1.1
   resolution: "@changesets/apply-release-plan@npm:8.1.1"
@@ -1611,9 +1647,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "node-core-example-basic-api@workspace:examples/basic-api"
   dependencies:
+    "@cassianolucas/node-core-kit": "workspace:^"
+    "@cassianolucas/node-core-kit-adapter-fastify": "workspace:^"
     fastify: "npm:^5.0.0"
-    node-core-kit: "workspace:^"
-    node-core-kit-adapter-fastify: "workspace:^"
     tsx: "npm:^4.20.0"
     typescript: "npm:^7.0.2"
     vite: "npm:^8.3.4"
@@ -1625,34 +1661,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "node-core-kit-adapter-contract@workspace:packages/adapter-contract"
   dependencies:
+    "@cassianolucas/node-core-kit": "workspace:^"
     "@types/node": "npm:^26.6.5"
-    node-core-kit: "workspace:^"
     typescript: "npm:^7.0.2"
-    vitest: "npm:^5.0.5"
-  languageName: unknown
-  linkType: soft
-
-"node-core-kit-adapter-fastify@workspace:^, node-core-kit-adapter-fastify@workspace:packages/adapter-fastify":
-  version: 0.0.0-use.local
-  resolution: "node-core-kit-adapter-fastify@workspace:packages/adapter-fastify"
-  dependencies:
-    fastify: "npm:^5.12.7"
-    node-core-kit: "workspace:^"
-    typescript: "npm:^7.0.2"
-    vite: "npm:^8.3.4"
-    vitest: "npm:^5.0.5"
-  languageName: unknown
-  linkType: soft
-
-"node-core-kit-adapter-node@workspace:^, node-core-kit-adapter-node@workspace:packages/adapter-node":
-  version: 0.0.0-use.local
-  resolution: "node-core-kit-adapter-node@workspace:packages/adapter-node"
-  dependencies:
-    "@types/node": "npm:^26.6.5"
-    node-core-kit: "workspace:^"
-    node-core-kit-adapter-contract: "workspace:^"
-    typescript: "npm:^7.0.2"
-    vite: "npm:^8.3.4"
     vitest: "npm:^5.0.5"
   languageName: unknown
   linkType: soft
@@ -1661,21 +1672,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "node-core-kit-benchmarks@workspace:benchmarks"
   dependencies:
+    "@cassianolucas/node-core-kit": "workspace:^"
+    "@cassianolucas/node-core-kit-adapter-fastify": "workspace:^"
+    "@cassianolucas/node-core-kit-adapter-node": "workspace:^"
     fastify: "npm:^5.12.7"
-    node-core-kit: "workspace:^"
-    node-core-kit-adapter-fastify: "workspace:^"
-    node-core-kit-adapter-node: "workspace:^"
-  languageName: unknown
-  linkType: soft
-
-"node-core-kit@workspace:^, node-core-kit@workspace:packages/core":
-  version: 0.0.0-use.local
-  resolution: "node-core-kit@workspace:packages/core"
-  dependencies:
-    "@types/node": "npm:^26.6.5"
-    typescript: "npm:^7.0.2"
-    vite: "npm:^8.3.4"
-    vitest: "npm:^5.0.5"
   languageName: unknown
   linkType: soft
 
