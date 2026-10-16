@@ -1,0 +1,29 @@
+{
+  "name": "nodecore-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Development workspace for the NodeCore framework",
+  "license": "MIT",
+  "packageManager": "yarn@4.18.1",
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
+  "scripts": {
+    "build": "yarn workspaces foreach -At run build",
+    "test": "yarn workspaces foreach -A run test",
+    "lint": "yarn workspaces foreach -A run lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "clean": "yarn workspaces foreach -A run clean"
+  },
+  "author": "Lucas C. Da Silva",
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "prettier": "^3.9.10",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.4"
+  }
+}
