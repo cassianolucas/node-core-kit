@@ -98,10 +98,11 @@ describe("Application - lifecycle", () => {
       ]),
       app.services,
       expect.any(Array),
+      { bodyLimit: 1024 * 1024, requestTimeoutMs: 30_000 },
     );
 
     expect(listen).toHaveBeenCalledTimes(1);
-    expect(listen).toHaveBeenCalledWith(3000);
+    expect(listen).toHaveBeenCalledWith({ port: 3000, host: "127.0.0.1" });
 
     await app.stop();
   });
@@ -111,7 +112,7 @@ describe("Application - lifecycle", () => {
 
     await app.start();
 
-    await expect(app.start()).rejects.toThrow("Application already started");
+    await expect(app.start()).rejects.toThrow("already started");
 
     expect(register).toHaveBeenCalledTimes(1);
     expect(listen).toHaveBeenCalledTimes(1);
@@ -136,18 +137,17 @@ describe("Application - lifecycle", () => {
     expect(close).toHaveBeenCalledTimes(1);
   });
 
-  it("allows starting the application again after it has stopped", async () => {
+  it("rejects starting again after the application has stopped", async () => {
     const { app, register, listen, close } = createApplication();
 
     await app.start();
     await app.stop();
-    await app.start();
 
-    expect(register).toHaveBeenCalledTimes(2);
-    expect(listen).toHaveBeenCalledTimes(2);
+    await expect(app.start()).rejects.toThrow("cannot be restarted");
+
+    expect(register).toHaveBeenCalledTimes(1);
+    expect(listen).toHaveBeenCalledTimes(1);
     expect(close).toHaveBeenCalledTimes(1);
-
-    await app.stop();
   });
 
   it("allows retrying startup when the HTTP adapter fails to listen", async () => {

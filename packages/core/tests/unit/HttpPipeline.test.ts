@@ -13,6 +13,7 @@ function createContext() {
     statusCode: 200,
     sent: false,
     status: vi.fn(() => response),
+    header: vi.fn(() => response),
     json: vi.fn(),
     end: vi.fn(),
   };

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "changelog": "@changesets/cli/changelog",
+  "commit": false,
+  "fixed": [
+    [
+      "node-core-kit",
+      "node-core-kit-adapter-fastify",
+      "node-core-kit-adapter-node"
+    ]
+  ],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": [
+    "node-core-kit-adapter-contract",
+    "node-core-kit-benchmarks",
+    "node-core-example-basic-api"
+  ]
+}

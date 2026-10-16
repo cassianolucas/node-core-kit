@@ -1,7 +1,7 @@
 {
   "name": "node-core-kit-adapter-fastify",
   "version": "0.1.0",
-  "description": "Fastify HTTP adapter for NodeCore",
+  "description": "Fastify HTTP adapter for NodeCore, with Fastify bundled as a dependency",
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
@@ -21,19 +21,42 @@
     "node": ">=22"
   },
   "dependencies": {
-    "fastify": "^5.0.0",
+    "fastify": "^5.12.7",
     "node-core-kit": "workspace:^"
   },
   "devDependencies": {
     "typescript": "^7.0.2",
     "vite": "^8.3.4",
-    "vitest": "^5.0.4"
+    "vitest": "^5.0.5"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "vitest run",
     "lint": "tsc --noEmit -p tsconfig.json",
     "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
-    "prepublishOnly": "yarn build && yarn test"
+    "prepublishOnly": "yarn build && yarn test",
+    "test:coverage": "vitest run --coverage"
+  },
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "fastify",
+    "adapter",
+    "http",
+    "nodecore"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cassianolucas/node-core-kit.git",
+    "directory": "packages/adapter-fastify"
+  },
+  "homepage": "https://github.com/cassianolucas/node-core-kit#readme",
+  "bugs": {
+    "url": "https://github.com/cassianolucas/node-core-kit/issues"
   }
 }

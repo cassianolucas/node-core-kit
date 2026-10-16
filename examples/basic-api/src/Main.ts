@@ -1,7 +1,11 @@
 import {
   Application,
+  endpoint,
   type HttpContext,
   type HttpMiddleware,
+  Results,
+  routeParam,
+  ValidationError,
 } from "node-core-kit";
 
 import { FastifyAdapter } from "node-core-kit-adapter-fastify";
@@ -26,6 +30,17 @@ class RequestLogger implements HttpMiddleware {
   }
 }
 
+// A plain function is a valid model parser: no validation library needed.
+const parseCreateUser = (input: unknown) => {
+  const name = (input as { name?: unknown } | undefined)?.name;
+
+  if (typeof name !== "string" || name.length === 0) {
+    throw new ValidationError("Name is required.");
+  }
+
+  return { name };
+};
+
 const app = new Application({
   http: new FastifyAdapter({
     logger: true,
@@ -48,14 +63,20 @@ api.mapGet("/status", () => ({
 
 const users = api.group("/users");
 
-users.mapGet("/:id", (context) => ({
-  id: context.request.params.id,
-}));
+users.mapGet(
+  "/:id",
+  endpoint((id: string) => ({ id }), routeParam("id")),
+);
+
+users.mapPost("/", { body: parseCreateUser }, (context) =>
+  Results.created("/api/v1/users/1", { id: "1", name: context.body.name }),
+);
 
 try {
-  await app.start();
-  console.info("NodeCore example API started");
+  console.info("NodeCore example API starting");
+  await app.run();
+  console.info("NodeCore example API stopped");
 } catch (error) {
-  console.error("Failed to start application", error);
+  console.error("Failed to run application", error);
   process.exitCode = 1;
 }

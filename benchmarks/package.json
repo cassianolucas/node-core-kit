@@ -1,0 +1,15 @@
+{
+  "name": "node-core-kit-benchmarks",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "bench": "node run.mjs"
+  },
+  "dependencies": {
+    "fastify": "^5.12.7",
+    "node-core-kit": "workspace:^",
+    "node-core-kit-adapter-fastify": "workspace:^",
+    "node-core-kit-adapter-node": "workspace:^"
+  }
+}

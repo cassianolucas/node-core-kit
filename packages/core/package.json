@@ -1,7 +1,7 @@
 {
   "name": "node-core-kit",
   "version": "0.1.0",
-  "description": "Framework core for building Node.js applications with TypeScript",
+  "description": "NodeCore core: minimal routing, middleware, filters, dependency injection and Problem Details errors for Node.js APIs",
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
@@ -10,6 +10,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./testing": {
+      "types": "./dist/testing/index.d.ts",
+      "import": "./dist/testing/index.js"
     }
   },
   "files": [
@@ -26,11 +30,37 @@
     "test": "vitest run",
     "lint": "tsc --noEmit -p tsconfig.json",
     "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
-    "prepublishOnly": "yarn build && yarn test"
+    "prepublishOnly": "yarn build && yarn test",
+    "test:coverage": "vitest run --coverage"
   },
   "devDependencies": {
+    "@types/node": "^26.6.5",
     "typescript": "^7.0.2",
     "vite": "^8.3.4",
-    "vitest": "^5.0.4"
+    "vitest": "^5.0.5"
+  },
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "framework",
+    "http",
+    "api",
+    "minimal-api",
+    "dependency-injection",
+    "middleware"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cassianolucas/node-core-kit.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/cassianolucas/node-core-kit#readme",
+  "bugs": {
+    "url": "https://github.com/cassianolucas/node-core-kit/issues"
   }
 }

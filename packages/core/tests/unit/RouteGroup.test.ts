@@ -12,6 +12,7 @@ function createRoot() {
   const root: RouteRegistry = {
     getPrefix: () => "",
     getMiddlewares: () => [],
+    getFilters: () => [],
     registerRoute: (route) => {
       routes.push(route);
     },

@@ -1,12 +1,74 @@
 import { HttpMiddleware } from "../http/index.js";
-import { RouteDefinition, RouteGroup, RouteHandler } from "./index.js";
+import {
+  EndpointFilter,
+  ModelBinding,
+  ModelHandler,
+  RouteDefinition,
+  RouteGroup,
+  RouteOptions,
+  TypedRouteHandler,
+} from "./index.js";
 
 export interface RouteRegistry {
-  mapGet(path: string, handler: RouteHandler): this;
-  mapPost(path: string, handler: RouteHandler): this;
-  mapPut(path: string, handler: RouteHandler): this;
-  mapPatch(path: string, handler: RouteHandler): this;
-  mapDelete(path: string, handler: RouteHandler): this;
+  mapGet<P extends string, B extends ModelBinding>(
+    path: P,
+    binding: B,
+    handler: ModelHandler<B, P>,
+    options?: RouteOptions,
+  ): this;
+  mapGet<P extends string>(
+    path: P,
+    handler: TypedRouteHandler<P>,
+    options?: RouteOptions,
+  ): this;
+
+  mapPost<P extends string, B extends ModelBinding>(
+    path: P,
+    binding: B,
+    handler: ModelHandler<B, P>,
+    options?: RouteOptions,
+  ): this;
+  mapPost<P extends string>(
+    path: P,
+    handler: TypedRouteHandler<P>,
+    options?: RouteOptions,
+  ): this;
+
+  mapPut<P extends string, B extends ModelBinding>(
+    path: P,
+    binding: B,
+    handler: ModelHandler<B, P>,
+    options?: RouteOptions,
+  ): this;
+  mapPut<P extends string>(
+    path: P,
+    handler: TypedRouteHandler<P>,
+    options?: RouteOptions,
+  ): this;
+
+  mapPatch<P extends string, B extends ModelBinding>(
+    path: P,
+    binding: B,
+    handler: ModelHandler<B, P>,
+    options?: RouteOptions,
+  ): this;
+  mapPatch<P extends string>(
+    path: P,
+    handler: TypedRouteHandler<P>,
+    options?: RouteOptions,
+  ): this;
+
+  mapDelete<P extends string, B extends ModelBinding>(
+    path: P,
+    binding: B,
+    handler: ModelHandler<B, P>,
+    options?: RouteOptions,
+  ): this;
+  mapDelete<P extends string>(
+    path: P,
+    handler: TypedRouteHandler<P>,
+    options?: RouteOptions,
+  ): this;
 
   group(prefix: string): RouteGroup;
 
@@ -16,4 +78,5 @@ export interface RouteRegistry {
 
   getPrefix(): string;
   getMiddlewares(): readonly HttpMiddleware[];
+  getFilters(): readonly EndpointFilter[];
 }
